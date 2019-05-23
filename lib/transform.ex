@@ -1,5 +1,15 @@
 defmodule XMLStreamTools.Transformer do
-  def transform(stream, acc \\ nil, fun) do
+  @moduledoc """
+  Apply a transform function to a stream of XML elements.
+
+  the function `fun` is called with each element in the stream, the current stack of open tags and the current accumulator.
+
+  fun is a function that takes three arguments:
+  - element: the current element, ex: {:open_tag, %{tag: "foo"}}
+  - stack: the current stack of open tags (the path), ex: [ "bar", "foo" ]
+  - the current accumulator
+  """
+  def transform(stream, acc \\ [], fun) do
     stream
     |> Stream.chunk_while(initial_acc(acc, fun), &process_item/2, &after_fn/1)
   end
@@ -40,3 +50,5 @@ defmodule XMLStreamTools.Transformer do
     raise "Error #{loc}: #{msg}"
   end
 end
+
+

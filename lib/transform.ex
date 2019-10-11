@@ -19,24 +19,34 @@ defmodule XMLStreamTools.Transformer do
   defp process_item({:open_tag, parts} = element, {stack, acc, fun}) do
     tag = Keyword.get(parts, :tag)
     stack = [tag | stack]
+
     fun.(element, stack, acc)
     |> next(stack, fun)
   end
+
   defp process_item({:text, _} = element, {stack, acc, fun}) do
     fun.(element, stack, acc)
     |> next(stack, fun)
   end
+
   defp process_item({:close_tag, parts} = element, {[head | stack] = pre_stack, acc, fun}) do
     tag = Keyword.get(parts, :tag)
+
     cond do
       tag == head ->
         fun.(element, pre_stack, acc)
         |> next(stack, fun)
-      tag != head -> error(element, "mis-matched close tag #{inspect(tag)}, expecting: #{head}")
-      [] == pre_stack -> error(element, "unmatched close tag #{inspect(tag)}")
+
+      tag != head ->
+        error(element, "mis-matched close tag #{inspect(tag)}, expecting: #{head}")
+
+      [] == pre_stack ->
+        error(element, "unmatched close tag #{inspect(tag)}")
     end
   end
-  defp process_item(element, {_, _, _}), do: error(element, "unexpected element: #{inspect(element)}")
+
+  defp process_item(element, {_, _, _}),
+    do: error(element, "unexpected element: #{inspect(element)}")
 
   defp next({element, acc}, stack, fun), do: {:cont, element, {stack, acc, fun}}
   defp next(acc, stack, fun), do: {:cont, {stack, acc, fun}}
@@ -50,5 +60,3 @@ defmodule XMLStreamTools.Transformer do
     raise "Error #{loc}: #{msg}"
   end
 end
-
-

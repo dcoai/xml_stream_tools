@@ -1,5 +1,7 @@
-# Run it from root with ix run examples/simple_xml.exs
 defmodule XMLStreamTools.Parser.Helpers do
+  @moduledoc """
+  Helper functions to handle quoted strings
+  """
   import NimbleParsec
 
   def maybe_escaped_char(combinator \\ empty(), char) do
@@ -20,6 +22,16 @@ defmodule XMLStreamTools.Parser.Helpers do
 end
 
 defmodule XMLStreamTools.Parser do
+  @moduledoc """
+  XML Parser: This parser emits a stream of XML tags and text.
+
+  It is designed to be used with Streams.  The parser emits 3 different types of items:
+  {:open_tag, [... open tag data...]}
+  {:close_tag, [... close tag data...]}
+  {:text, [... text data...]}
+
+  These are available as a stream of items which can be processed by other stream functions.
+  """
   import NimbleParsec
   import XMLStreamTools.Parser.Helpers
 

@@ -12,7 +12,7 @@ defmodule XMLStreamTools.Inspector do
   """
 
   def inspect_fn(opts \\ []) do
-    options = %{ label: Keyword.get(opts, :label, nil) }
+    options = %{label: Keyword.get(opts, :label, nil)}
     fn element, path, acc -> inspect(element, path, acc, options) end
   end
 

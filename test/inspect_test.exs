@@ -12,9 +12,12 @@ defmodule XMLStreamTools.InspectorTest do
 
   test "test inspect" do
     xml = "<foo a='1'>first element<bar>nested element</bar></foo>"
+
     result =
       XMLStreamTools.Parser.parse(xml)
-      |> XMLStreamTools.Transformer.transform(XMLStreamTools.Inspector.inspect_fn(label: "test_stream"))
+      |> XMLStreamTools.Transformer.transform(
+        XMLStreamTools.Inspector.inspect_fn(label: "test_stream")
+      )
       |> Enum.map(fn x -> x end)
 
     IO.inspect(result)

@@ -46,7 +46,7 @@ be found at <https://hexdocs.pm/xmlstreamtools>.
 
 ## My Use Case
 
-I am requesting data form a service which return XML.  I use this to
+I am requesting data from a service which return XML.  I use this to
 parse the returned data and generate a stream of elements.  The
 elements are filtered, then transformed into elixir maps/lists, and
 ultimatly displayed as formatted JSON.

@@ -5,7 +5,7 @@ defmodule XMLStreamTools.MixProject do
     [
       app: :xml_stream_tools,
       version: "0.1.0",
-      elixir: "~> 1.10",
+      elixir: "~> 1.15",
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
@@ -21,8 +21,8 @@ defmodule XMLStreamTools.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:mix_test_watch, "~> 0.9", only: :dev, runtime: false},
-      {:nimble_parsec, "~> 0.5"}
+      {:mix_test_watch, "~> 1.2", only: :dev, runtime: false},
+      {:nimble_parsec, "~> 1.4"}
     ]
   end
 end

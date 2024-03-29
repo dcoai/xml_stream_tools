@@ -1,17 +1,38 @@
+# Emacs
+*~
+\#*\#
+.\#*
+.DS_Store
+
+# Python
+.venv
+venv
+
+# Elixir
+*.beam
+*.swp
+*.swo
+*.mix-*
+*.ez
+*.log
+*.tmp
+.coverage
+
+
 # The directory Mix will write compiled artifacts to.
-/_build/
+_build/
 
 # If you run "mix test --cover", coverage assets end up here.
-/cover/
+cover/
 
 # The directory Mix downloads your dependencies sources to.
-/deps/
+deps/
 
 # Where third-party dependencies like ExDoc output generated docs.
-/doc/
+doc/
 
 # Ignore .fetch files in case you like to edit your project deps locally.
-/.fetch
+.fetch
 
 # If the VM crashes, it generates a dump, let's ignore it too.
 erl_crash.dump
@@ -19,8 +40,5 @@ erl_crash.dump
 # Also ignore archive artifacts (built via "mix archive.build").
 *.ez
 
-# Ignore package tarball (built via "mix hex.build").
-xml_stream_tools-*.tar
-
 # Temporary files, for example, from tests.
-/tmp/
+tmp/

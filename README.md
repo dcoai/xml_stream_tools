@@ -14,9 +14,14 @@ Tools:
   converted.  For example if your XML lends itself to going into an Explorer structure, that
   is possible to create with the Formatter.
 
-# The dreaded To Do section:
+## Contributions
+
+Any contributions/suggestions are welcome.
+
+## The dreaded To Do section:
 
 - write some documentation, so other people can find this useful.
+- update the parser so it reads from a stream, currently it just takes input as a binary.
 - make an inspect that writes to Logger
 - make a filter that takes XPath like input to select or exclude XML from the stream
 - make an encoder protocol.  To encode Maps, Lists and Structs into XML
@@ -39,3 +44,9 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/xmlstreamtools>.
 
+## My Use Case
+
+I am requesting data form a service which return XML.  I use this to
+parse the returned data and generate a stream of elements.  The
+elements are filtered, then transformed into elixir maps/lists, and
+ultimatly displayed as formatted JSON.
